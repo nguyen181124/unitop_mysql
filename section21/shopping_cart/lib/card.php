@@ -10,13 +10,10 @@ function add_cart($id)
 
     $_SESSION['cart']['buy'][$id] = [
         'id' => $item['id'],
-        'url' => $item['url'],
-        'product_title' => $item['product_title'],
+        'img' => $item['img'],
+        'name' => $item['name'],
         'price' => $item['price'],
-        'product_thumb' => $item['product_thumb'],
-        'code' => $item['code'],
-        'qty' => $qty,
-        'sub_total' => $item['price'] * $qty,
+        'qty' => $qty
     ];
 
     update_info_cart();

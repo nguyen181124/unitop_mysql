@@ -3,6 +3,7 @@ get_header();
 ?>
 <?php
 $list_buy = get_list_buy_cart();
+// $list_buy = get_record('products', [], []);
 // show_array($list_buy);
 ?>
 <div id="main-content-wp" class="cart-page">
@@ -36,15 +37,15 @@ $list_buy = get_list_buy_cart();
                                 foreach ($list_buy as $item) {
                                     ?>
                                     <tr>
-                                        <td><?php echo $item['code'] ?></td>
+                                        <td><?php echo $item['id'] ?></td>
                                         <td>
-                                            <a href="<?php echo $item['url'] ?>" title="" class="thumb">
-                                                <img src="<?php echo $item['product_thumb'] ?>" alt="">
+                                            <a href="?mod=product&act=detail&id=<?php echo $item['id'] ?>" title="" class="thumb">
+                                                <img src="<?php echo $item['img'] ?>" alt="">
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="<?php echo $item['url'] ?>" title="<?php echo $item['product_title'] ?>"
-                                                class="name-product"><?php echo $item['product_title'] ?></a>
+                                            <a href="?mod=product&act=detail&id=<?php echo $item['id'] ?>" title="<?php echo $item['name'] ?>"
+                                                class="name-product"><?php echo $item['name'] ?></a>
                                         </td>
                                         <td><?php echo currency_format($item['price'], 'đ') ?></td>
                                         <td>

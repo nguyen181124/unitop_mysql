@@ -22,6 +22,10 @@ function get_record(string $table, array $column = [], array $conditions = [])
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll();
+    // $result = $stmt->fetchAll(PDO::FETCH_COLUMN | PDO::FETCH_GROUP, 1);
+    // $result = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch as associative array with specified key
+
+    // print_r($result);
     return $result;
 }
 
@@ -94,3 +98,6 @@ function insert_record(string $table, array $columns )
 //     'name', 'id'
 // ],['phone',2])
 
+function select_record(){
+    
+}

@@ -2,6 +2,7 @@
 get_header();
 ?>
 <?php
+$list_add = get_record('products', [], []);
 $cat_id = (int) $_GET['cat_id'];
 $infor_cat = get_product_card_by_id($cat_id);
 $list_item = get_list_product_by_card_id($cat_id);
@@ -16,26 +17,22 @@ $list_item = get_list_product_by_card_id($cat_id);
                     <p class="section-desc"> Có <?php echo count($list_item)?> sản phẩm trong mục</p>
                 </div>
                 <div class="section-detail">
-                    <?php
-                    if (!empty($list_item)) {
-                        ?>
-                        <ul class="list-item clearfix">
-                            <?php foreach ($list_item as $item) { ?>
+                    
+                    <ul class="list-item clearfix">
+                        <?php foreach ($list_add as $product) {
+
+                            if ($product['category_id'] == $cat_id) {
+                                ?>
                                 <li>
-                                    <a href="<?php echo $item['url'] ?>" title="" class="thumb">
-                                        <img src="<?php echo $item['product_thumb']?>" alt="">
-                                    </a>
-                                    <a href="<?php echo $item['url']?>" title="" class="title"><?php echo $item['product_title']?></a>
-                                    <p class="price"><?php echo currency_format($item['price'], 'đ')?></p>
+                                    <img src="<?php echo $product['img'] ?>" alt="">
+                                    <a href="?mod=product&act=detail&id=<?php echo $product['id'] ?>" title="" class="title"><?php echo $product['name'] ?></a>
+                                    <p class="price"><?php echo currency_format($product['price'], 'đ') ?></p>
                                 </li>
                                 <?php
                             }
-                            ?>
-
-                        </ul>
-                        <?php
-                    }
-                    ?>
+                        }
+                        ?>
+                    </ul>
                 </div>
             </div>
             <div class="section" id="pagenavi-wp">

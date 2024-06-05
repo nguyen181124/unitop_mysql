@@ -9,11 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST['id'];
         $name = $_POST['name'];
         $img = $_POST['img'];
-        $category_id = $_POST[`category_id`];
+        $category_id = $_POST['category_id'];
         $price = $_POST['price'];
-        // insert_record(PDO::PARAM_INT(),'products', ['name' => $name, 'category_id' => (int)$category_id]);
         insert_record('products', [
             'name' => $name,
+            'img' => $img,
+            'price' => $price,
             "category_id" => $category_id,
         ]);
         if ($is_success) {
@@ -22,10 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (Exception $exception) {
         print_r($exception->getMessage());
     }
-
-    // print_r($conn);
-    // insert_record('Product', ['name' => $name, 'img' => $img, 'categoty_id' => $category_id, 'price' => $price]);
-
 }
 ?>
 

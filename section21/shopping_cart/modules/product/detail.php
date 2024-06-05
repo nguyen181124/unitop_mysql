@@ -13,12 +13,12 @@ $item = get_product_by_id($id);
             <div class="section" id="info-product-wp">
                 <div class="section-detail clearfix">
                     <div class="thumb fl-left">
-                        <img src="<?php echo $item['product_thumb']?>" alt="">
+                        <img src="<?php echo $item['img']?>" alt="">
                     </div>
                     <div class="detail fl-right">
-                        <h3 class="title"><?php echo $item['product_title']?></h3>
+                        <h3 class="title"><?php echo $item['name']; ?></h3>
                         <p class="price"><?php echo currency_format($item['price'], 'đ')?></p>
-                        <p class="product-code">Mã sản phẩm: <?php echo $item['code']?></p>
+                        <p class="product-code">Mã sản phẩm: <?php echo $item['id']?></p>
                         <div class="desc-short">
                             <h5>Mô tả sản phẩm:</h5>
                             <p><?php echo $item['product_desc']?></p>
