@@ -2,6 +2,10 @@
 get_header();
 ?>
 
+<?php 
+require 'upload/upload.php';
+?>
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
@@ -23,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (Exception $exception) {
         print_r($exception->getMessage());
     }
+    
 }
 ?>
 
@@ -31,13 +36,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="wp-inner clearfix">
         <?php get_sidebar(); ?>
         <h1>Thêm sản phẩm mới</h1>
-        <form action="" method="post">
+        <form action="upload.php" method="post">
             Mã sản phẩm
             <input name="id" type="text" />
             Tên sản phẩm
             <input name="name" type="text" />
             Ảnh
-            <input name="img" type="text" />
+            <input name="img" type="file" />
             Loại sản phẩm
             <select id="category_id" name="category_id">
                 <option value="0">--Loại sản phẩm--</option>

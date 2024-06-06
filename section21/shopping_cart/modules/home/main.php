@@ -24,7 +24,7 @@ $infor_cat_macbook = get_product_card_by_id(2);
                             if ($product['category_id'] == 1) {
                                 ?>
                                 <li>
-                                    <img src="<?php echo $product['img'] ?>" alt="">
+                                    <a href="?mod=product&act=detail&id=<?php echo $product['id'] ?>"><img src="<?php echo $product['img']; ?>" alt=""></a>
                                     <a href="?mod=product&act=detail&id=<?php echo $product['id'] ?>" title="" class="title"><?php echo $product['name'] ?></a>
                                     <p class="price"><?php echo currency_format($product['price'], 'đ') ?></p>
                                 </li>
