@@ -20,11 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_FILES["img"]["name"])) {
             $isvalid = false;
             $er['img'] = "Hãy chọn hình ảnh cho sản phẩm";
-        } elseif ($img_type !== IMAGETYPE_JPEG && $img_type !== IMAGETYPE_PNG && $img_type !== IMAGETYPE_GIF) {
+        } elseif (!in_array(exif_imagetype($_FILES["img"]["tmp_name"]), [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF])) {
             $isvalid = false;
             $er['img'] = "Hãy chọn hình ảnh có định dạng JPEG, PNG hoặc GIF";
         } else {
             $img = '/public/images/' . $_FILES["img"]["name"];
+
+            // Check if the file is uploaded successfully
+            if (!move_uploaded_file($_FILES["img"]["tmp_name"], $upload_file)) {
+                $isvalid = false;
+                $er['img'] = "Upload hình ảnh thất bại";
+            }
 
         }
 
@@ -65,5 +71,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 }
-
-

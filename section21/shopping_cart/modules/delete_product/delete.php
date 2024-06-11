@@ -1,5 +1,4 @@
-<?
-// $id = (int) $_GET['id'];
-// print_r($id);
-echo('hbvru');
-// delete_product($id);
+<?php
+$id = (int) $_GET['id'];
+delete_product($id);
+header('Location: http://shop.local/?page=home');

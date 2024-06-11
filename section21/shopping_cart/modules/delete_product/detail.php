@@ -22,7 +22,7 @@ $item = get_product_by_id($id);
                         <div class="desc-short">
                             <h5>Mô tả sản phẩm:</h5>
                         </div>
-                        <a href="?mod=delete_product&act=delete" title="Xóa sản phẩm" class="del-product"><i
+                        <a href="?mod=delete_product&act=delete&id=<?php echo $id ?>" title="Xóa sản phẩm" class="del-product"><i
                                 class="fa fa-trash-o"></i></a>
                             
                     </div>
