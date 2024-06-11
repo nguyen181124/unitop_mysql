@@ -21,6 +21,7 @@ require 'lib/query.php';
 $mod = !empty($_GET['mod'])?$_GET['mod']:'home';
 $act = !empty($_GET['act'])?$_GET['act']:'main';
 $path  = "modules/{$mod}/{$act}.php";
+ini_set('display_errors', '1');
 
 if(file_exists($path)) {
     require $path;

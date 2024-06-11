@@ -35,3 +35,27 @@ function get_product_by_id($id) {
     return false;
 }
 
+function paginate(string $table,int $page, int $limit, array $condition = []) {
+    $offset = ($page - 1) * $limit;
+    global $conn;
+    $sql = "SELECT * FROM $table ";
+    if (!empty($condition)){
+        $sql.= "WHERE $condition[0] $condition[1] $condition[2] ";
+    }
+    $sql .= "LIMIT $limit OFFSET $offset";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+}
+
+// SELECT * FROM products WHERE catagory_id = 1 LIMIT 4 OFFSET 0;
+
+function delete_product($id){
+    global $conn;
+    $sql = "DELETE FROM products WHERE id={$id}";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+}

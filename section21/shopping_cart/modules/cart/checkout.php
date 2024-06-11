@@ -88,7 +88,7 @@ $list_buy = get_list_buy_cart();
                                         ?>
                                             <tbody>
                                                 <tr class="cart-item">
-                                                    <td class="product-name"><?php echo $item['product_title'] ?><strong
+                                                    <td class="product-name"><?php echo $item['name'] ?><strong
                                                             class="product-quantity">x <?php echo $item['qty'] ?></strong>
                                                     </td>
                                                     <td class="product-total">

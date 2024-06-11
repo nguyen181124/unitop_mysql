@@ -2,33 +2,8 @@
 get_header();
 ?>
 
-<?php 
-require 'upload/upload.php';
-?>
-
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    try {
-        $isvalid = true;
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        $img = $_POST['img'];
-        $category_id = $_POST['category_id'];
-        $price = $_POST['price'];
-        insert_record('products', [
-            'name' => $name,
-            'img' => $img,
-            'price' => $price,
-            "category_id" => $category_id,
-        ]);
-        if ($is_success) {
-            echo " Insert successfully!";
-        }
-    } catch (Exception $exception) {
-        print_r($exception->getMessage());
-    }
-    
-}
+$er = $_SESSION['message'] ?? [];
 ?>
 
 <html>
@@ -36,39 +11,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="wp-inner clearfix">
         <?php get_sidebar(); ?>
         <h1>Thêm sản phẩm mới</h1>
-        <form action="upload.php" method="post">
+        <form style="display:flex; flex-direction:column; width: 20%;" action="?mod=upload&act=upload" method="post" enctype="multipart/form-data">
             Mã sản phẩm
             <input name="id" type="text" />
             Tên sản phẩm
             <input name="name" type="text" />
+            <?php if(isset($er['name'])){
+                echo $er['name'];
+            } ?>
             Ảnh
             <input name="img" type="file" />
+            <?php if(isset($er['img'])){
+                echo $er['img'];
+            } ?>
             Loại sản phẩm
             <select id="category_id" name="category_id">
                 <option value="0">--Loại sản phẩm--</option>
                 <option value="1">Điện thoại</option>
                 <option value="2">Macbook</option>
             </select>
+            <?php if(isset($er['category'])){
+                echo $er['category'];
+            } ?>
             Giá
             <input name="price" type="number" />
+            <?php if(isset($er['price'])){
+                echo $er['price'];
+            } ?>
             <input class="save border-2 border-black max-w-max px-4 py-2 mt-4 " type="submit" name="Thêm"
                 value="Thêm" />
         </form>
-    </div>
-
-    <div class="database">
-        <?php foreach ($list_add as $product) {
-            ?>
-            <tr>
-                <td><?php echo $product['id'] ?></td>
-                <td><?php echo $product['name'] ?></td>
-                <td><img src="<?php echo $product['img'] ?>" alt=""></td>
-                <td><?php echo $product['category_id'] ?></td>
-                <td><?php echo $product['price'] ?></td><br>
-            </tr>
-            <?php
-        }
-        ?>
     </div>
 </div>
 

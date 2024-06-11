@@ -2,6 +2,8 @@
 get_header();
 ?>
 
+<div id="content">
+<h1>Danh sách sản phẩm</h1>
 <?php
 
 $list_add = get_record('products', [], []);
@@ -10,7 +12,6 @@ $infor_cat_macbook = get_product_card_by_id(2);
 ?>
 <div id="main-content-wp" class="home-page">
     <div class="wp-inner clearfix">
-        <?php get_sidebar(); ?>
         <div id="content" class="fl-right">
             <div class="section list-cat">
                 <div class="section-head">
@@ -23,8 +24,8 @@ $infor_cat_macbook = get_product_card_by_id(2);
                             if ($product['category_id'] == 1) {
                                 ?>
                                 <li>
-                                    <a href="?mod=product&act=detail&id=<?php echo $product['id'] ?>"><img src="<?php echo $product['img']; ?>" alt=""></a>
-                                    <a href="?mod=product&act=detail&id=<?php echo $product['id'] ?>" title="" class="title"><?php echo $product['name'] ?></a>
+                                    <a href="?mod=delete_product&act=detail&id=<?php echo $product['id'] ?>"><img src="<?php echo $product['img']; ?>" alt=""></a>
+                                    <a href="?mod=delete_product&act=detail&id=<?php echo $product['id'] ?>" title="" class="title"><?php echo $product['name'] ?></a>
                                     <p class="price"><?php echo currency_format($product['price'], 'đ') ?></p>
                                 </li>
                                 <?php
@@ -45,8 +46,8 @@ $infor_cat_macbook = get_product_card_by_id(2);
                             if ($product['category_id'] == 2) {
                                 ?>
                                 <li>
-                                    <img src="<?php echo $product['img'] ?>" alt="">
-                                    <a href="?mod=product&act=detail&id=<?php echo $product['id'] ?>" title="" class="title"><?php echo $product['name'] ?></a>
+                                <a href="?mod=delete_product&act=detail&id=<?php echo $product['id'] ?>"><img src="<?php echo $product['img']; ?>" alt=""></a>
+                                    <a href="?mod=delete_product&act=detail&id=<?php echo $product['id'] ?>" title="" class="title"><?php echo $product['name'] ?></a>
                                     <p class="price"><?php echo currency_format($product['price'], 'đ') ?></p>
                                 </li>
                                 <?php
@@ -59,6 +60,8 @@ $infor_cat_macbook = get_product_card_by_id(2);
         </div>
     </div>
 </div>
+</div>
+
 <?php
 get_footer();
 ?>

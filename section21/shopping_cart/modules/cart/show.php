@@ -89,8 +89,7 @@ $list_buy = get_list_buy_cart();
             </div>
             <div class="section" id="action-cart-wp">
                 <div class="section-detail">
-                    <p class="title">Click vào <span>“Cập nhật giỏ hàng”</span> để cập nhật số lượng. Nhập vào số lượng
-                        <span>0</span> để xóa sản phẩm khỏi giỏ hàng. Nhấn vào thanh toán để hoàn tất mua hàng.
+                    <p class="title">Click vào <span>“Cập nhật giỏ hàng”</span> để cập nhật số lượng. Nhấn vào thanh toán để hoàn tất mua hàng.
                     </p>
                     <a href="?" title="" id="buy-more">Mua tiếp</a><br />
                     <a href="?mod=cart&act=delete_all" title="" id="delete-cart">Xóa giỏ hàng</a>

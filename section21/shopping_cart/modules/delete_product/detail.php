@@ -8,26 +8,23 @@ $item = get_product_by_id($id);
 
 <div id="main-content-wp" class="detail-product-page clearfix">
     <div class="wp-inner clearfix">
-        <?php get_sidebar();?>
+        <?php get_sidebar(); ?>
         <div id="content" class="fl-right">
             <div class="section" id="info-product-wp">
                 <div class="section-detail clearfix">
                     <div class="thumb fl-left">
-                        <img src="<?php echo $item['img']?>" alt="">
+                        <img src="<?php echo $item['img'] ?>" alt="">
                     </div>
                     <div class="detail fl-right">
                         <h3 class="title"><?php echo $item['name']; ?></h3>
-                        <p class="price"><?php echo currency_format($item['price'], 'đ')?></p>
-                        <p class="product-code">Mã sản phẩm: <?php echo $item['id']?></p>
+                        <p class="price"><?php echo currency_format($item['price'], 'đ') ?></p>
+                        <p class="product-code">Mã sản phẩm: <?php echo $item['id'] ?></p>
                         <div class="desc-short">
                             <h5>Mô tả sản phẩm:</h5>
                         </div>
-                        <div class="num-order-wp">
-                            <span>Số lượng:</span>
-                            <input type="text" id="num-order" name="num-order" value="1">
-                            <a href="<?php echo $item['url_add_cart']?>" title="" class="add-to-cart">Thêm giỏ hàng</a>
-                        </div>
-
+                        <a href="?mod=delete_product&act=delete" title="Xóa sản phẩm" class="del-product"><i
+                                class="fa fa-trash-o"></i></a>
+                            
                     </div>
                 </div>
             </div>

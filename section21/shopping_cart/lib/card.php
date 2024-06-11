@@ -13,7 +13,8 @@ function add_cart($id)
         'img' => $item['img'],
         'name' => $item['name'],
         'price' => $item['price'],
-        'qty' => $qty
+        'qty' => $qty,
+        'sub_total' => $item['price'] * $qty,
     ];
 
     update_info_cart();
